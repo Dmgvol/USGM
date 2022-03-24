@@ -8,35 +8,73 @@ A simple yet universal tool to manage save files, allowing to store and load dif
 - Place the exe in the SavedGames folder: </br>
 `%localappdata%\<Game>\Saved\SaveGames`
 - Create a new directory called `Saves`.
-- Place all of your custom saves in that folder, and name them to differentiate between them.
-- Launch the USGM, it will generate the default config file suited for Shadow Warrior 3.
+- Place all of your custom saves in that folder, and name them to differentiate between them. 
+- Launch USGM, it will generate the default config file suited for Shadow Warrior 3.
 - Once you're ready, select the save, slot id and click "Load save".
 
 
 ## Configuring for different games
-The config structure file is really simple, just 3 parameters;
+The config structure file is really simple, just 5 parameters;
 ```css
 SaveFilePrefix=SaveSlotIndex{n}
 SaveFileCountStart=1
 TotalSlots=3
+IsComplex=True
+Sort=True
 ```
 
-- SaveFilePrefix - Specify how the save file is named
+- SaveFilePrefix - Specify how the save file is named,</br>
+can have multiple prefixs if you set `IsComplex` to True.
   
 - - Example with incremental ID (for Shadow Warrior 3):</br>
 `SaveFilePrefix=SaveSlotIndex{n}` </br>
 Example with no incremental ID (for Ghostrunner):</br>
 `SaveFilePrefix=Ghostrunner` </br>
 
-- SaveFileCountStart - In case there is an incremental ID in the save file, specify from which number to begin with, in case it starts with 0.
+- SaveFileCountStart - The incremental ID number which it starts to count from.
 - TotalSlots - Corresponds to the number of save slots.
+
+- IsComplex - In case your game uses multiple save files per slot. 
+- - Please see [Folder Hierarchy](#saves-folder-hierarchy) for proper usage.
+- - And [Configuring For Different Games](#configuring-for-different-games) for examples.
+- Sort -  In case you want the saves to be visually sorted.
+
+
+## Saves Folder Hierarchy 
+- If you have `IsComplex` set to **False** (single `.sav` file) then use the following hierarchy:
+```
+-Saves
+  └ 2 Way to Motoko.sav
+  └ 3 Motoko's Thunderdome.sav
+  └ 3 Motoko's Thunderdome2.sav
+
+  and etc..
+```
+
+- If you have `IsComplex` set to **True** (multiple `.sav` files) then use the following hierarchy:
+```
+-Saves
+└ 2 Way to Motoko
+  └ ProgressionSlotIndex2.sav
+  └ SaveSlotIndex2.sav
+└ 3 Motoko's Thunderdome
+  └ ProgressionSlotIndex2.sav
+  └ SaveSlotIndex2.sav
+
+and etc...
+```
+
+_Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
 Shadow Warrior 3:
 ```
 SaveFilePrefix=SaveSlotIndex{n}
+SaveFilePrefix=ProgressionSlotIndex{n}
 SaveFileCountStart=1
 TotalSlots=3
+IsComplex=True
+Sort=True
 ```
 
 Solar Ash:
@@ -44,6 +82,8 @@ Solar Ash:
 SaveFilePrefix=Save_{n}
 SaveFileCountStart=0
 TotalSlots=3
+IsComplex=False
+Sort=True
 ```
 
 
@@ -52,6 +92,8 @@ Ghostrunner:
 SaveFilePrefix=Ghostrunner
 SaveFileCountStart=0
 TotalSlots=1
+IsComplex=False
+Sort=True
 ```
 
 ## Credits
