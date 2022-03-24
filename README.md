@@ -1,8 +1,6 @@
 # Universal Save Game Manager (USGM)
 A simple yet universal tool to manage save files, allowing to store and load different save files.
 
-*Note: Supports only single sav files, doesn't support chained/multiple files(yet).*
-
 ## How to use
 - Download the latest [version](https://github.com/Dmgvol/USGM/raw/main/USGM/bin/Release/USGM.exe).
 - Place the exe in the SavedGames folder: </br>
