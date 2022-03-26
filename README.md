@@ -40,7 +40,7 @@ Example with no incremental ID (for Ghostrunner):</br>
 
 ## Saves Folder Hierarchy 
 - If you have `IsComplex` set to **False** (single `.sav` file) then use the following hierarchy:
-```css
+```
 -Saves
   └ 2 Way to Motoko.sav
   └ 3 Motoko's Thunderdome.sav
@@ -50,7 +50,7 @@ Example with no incremental ID (for Ghostrunner):</br>
 ```
 
 - If you have `IsComplex` set to **True** (multiple `.sav` files) then use the following hierarchy:
-```css
+```
 -Saves
 └ 2 Way to Motoko
   └ ProgressionSlotIndex2.sav
