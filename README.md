@@ -40,7 +40,7 @@ Example with no incremental ID (for Ghostrunner):</br>
 
 ## Saves Folder Hierarchy 
 - If you have `IsComplex` set to **False** (single `.sav` file) then use the following hierarchy:
-```
+```css
 -Saves
   └ 2 Way to Motoko.sav
   └ 3 Motoko's Thunderdome.sav
@@ -50,7 +50,7 @@ Example with no incremental ID (for Ghostrunner):</br>
 ```
 
 - If you have `IsComplex` set to **True** (multiple `.sav` files) then use the following hierarchy:
-```
+```css
 -Saves
 └ 2 Way to Motoko
   └ ProgressionSlotIndex2.sav
@@ -65,8 +65,17 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
-Shadow Warrior 3:
+Ghostwire: Tokyo:
+```css
+SaveFilePrefix=SaveGameSlot{n}
+SaveFileCountStart=1
+TotalSlots=10
+IsComplex=False
+Sort=True
 ```
+
+Shadow Warrior 3:
+```css
 SaveFilePrefix=SaveSlotIndex{n}
 SaveFilePrefix=ProgressionSlotIndex{n}
 SaveFileCountStart=1
@@ -76,7 +85,7 @@ Sort=True
 ```
 
 Solar Ash:
-```
+```css
 SaveFilePrefix=Save_{n}
 SaveFileCountStart=0
 TotalSlots=3
@@ -86,7 +95,7 @@ Sort=True
 
 
 Ghostrunner:
-```
+```css
 SaveFilePrefix=Ghostrunner
 SaveFileCountStart=0
 TotalSlots=1
