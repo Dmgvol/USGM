@@ -68,13 +68,14 @@ namespace USGM {
             if(Config.GetInstance().IsComplex) {
                 // Complex - load all nested .sav files based on SaveFilePrefix items
                 string[] filesToLoad = Directory.GetFiles(Config.GetInstance().SavesFolder + "\\" + ((ListBoxItem)saveListBox.SelectedItem).Content.ToString());
-                for(int i = 0; i < filesToLoad.Length; i++) {
-                    var matchedPrefix = Config.GetInstance().SaveFilePrefix
-                        .FirstOrDefault(x => Path.GetFileNameWithoutExtension(filesToLoad[i].Replace("{n}", ""))
-                        .Contains(x.Replace("{n}", "")));
+                int currSlotIndex = (saveSlotSelector.SelectedIndex + Config.GetInstance().SaveFileCountStart);
+                for (int i = 0; i < filesToLoad.Length; i++) {
+                    // Get the matching file pattern
+                    string matchedPrefix = GetMatchedPrefix(filesToLoad[i]);
+                    if (string.IsNullOrEmpty(matchedPrefix)) continue;
 
-                    if(string.IsNullOrEmpty(matchedPrefix)) continue;
-                    string pathToSave = matchedPrefix.Replace("{n}", "" + (saveSlotSelector.SelectedIndex + Config.GetInstance().SaveFileCountStart)) + ".sav";
+                    // copy patterned file
+                    string pathToSave = matchedPrefix.Replace("{n}", "" + currSlotIndex) + ".sav";
                     try {
                         File.Copy(filesToLoad[i], pathToSave, true);
                     } catch(Exception exception) {
@@ -106,11 +107,20 @@ namespace USGM {
             }
         }
 
+        private string GetMatchedPrefix(string file) {
+            for (int i = Config.GetInstance().SaveFileCountStart; i <= Config.GetInstance().TotalSlots; i++) {
+                var matchedPrefix = Config.GetInstance().SaveFilePrefix
+                       .FirstOrDefault(x => Path.GetFileNameWithoutExtension(file.Replace("{n}", "" + i))
+                       .Equals(x.Replace("{n}", "" + i)));
+                if (!string.IsNullOrEmpty(matchedPrefix)) return matchedPrefix;
+            }
+            return string.Empty;
+        }
+
         private void refreshBtn_Click(object sender, RoutedEventArgs e) => GetSaveFiles();
 
         private void loadSaveBtn_Click(object sender, RoutedEventArgs e) => LoadSelectedSave();
     }
-
 
     /// <summary>
     /// Comparer for listed save names, custom for sorting numbers as well.

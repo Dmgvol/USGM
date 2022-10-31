@@ -28,6 +28,8 @@ can have multiple prefixs if you set `IsComplex` to True.
 `SaveFilePrefix=SaveSlotIndex{n}` </br>
 Example with no incremental ID (for Ghostrunner):</br>
 `SaveFilePrefix=Ghostrunner` </br>
+Example with range value parameter (for Scorn):</br>
+`SaveFilePrefix=ScornSave_0{n}_{range:0-37}` </br>
 
 - SaveFileCountStart - The incremental ID number which it starts to count from.
 - TotalSlots - Corresponds to the number of save slots.
@@ -65,6 +67,17 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
+Scorn:
+```cs
+SaveFilePrefix=ScornSave_0{n}
+SaveFilePrefix=ScornSave_0{n}_LAT
+SaveFilePrefix=ScornSave_0{n}_{range:0-37}
+SaveFileCountStart=0
+TotalSlots=3
+IsComplex=True
+Sort=True
+```
+
 Ghostwire: Tokyo:
 ```css
 SaveFilePrefix=SaveGameSlot{n}
@@ -92,7 +105,6 @@ TotalSlots=3
 IsComplex=False
 Sort=True
 ```
-
 
 Ghostrunner:
 ```css

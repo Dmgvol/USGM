@@ -39,7 +39,33 @@ namespace USGM {
             for(int i = 0; i < data.Length; i++) {
                 var Par = GetParameter(data[i]);
                 if(Par.Item1 == nameof(SaveFilePrefix)) {
-                    SaveFilePrefix.Add(Par.Item2);
+                    // range loop?
+                    if (Par.Item2.Contains("{range:")) {
+                        try {
+                            string par = Par.Item2.Substring(Par.Item2.IndexOf("{range:") + ("{range:").Length);
+                            par = par.Substring(0, par.IndexOf('}'));
+                            string[] parts = par.Split('-');
+                            if(parts != null && parts.Length == 2) {
+                                int min = int.Parse(parts[0]);
+                                int max = int.Parse(parts[1]);
+                                if(max > min) {
+                                    // add range
+                                    string prefix = "{range:" + min + "-" + max + "}";
+                                    for(int j = min; j <= max; j++) {
+                                        string newSaveFilePrefix = Par.Item2.Replace(prefix, ""+ j);
+                                        SaveFilePrefix.Add(newSaveFilePrefix);
+                                    }
+                                }
+                            }
+                        } catch (Exception) {
+                            MessageBox.Show("Failed to parse config file\n" +
+                                "Line: " + (i+1) + ", element {range:<min>-<max>}\n\n" +
+                                "Will still work but without:\n" +
+                                Par.Item1 +"="+ Par.Item2, "USGM - Error parsing config file", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    } else {
+                        SaveFilePrefix.Add(Par.Item2);
+                    }
                 } else if(Par.Item1 == nameof(SaveFileCountStart)) {
                     if(IsNumeric(Par.Item2)) {
                         SaveFileCountStart = int.Parse(Par.Item2);
