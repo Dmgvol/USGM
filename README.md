@@ -68,7 +68,7 @@ _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
 Scorn:
-```cs
+```css
 SaveFilePrefix=ScornSave_0{n}
 SaveFilePrefix=ScornSave_0{n}_LAT
 SaveFilePrefix=ScornSave_0{n}_{range:0-37}
