@@ -8,7 +8,9 @@ A simple yet universal tool to manage save files, allowing to store and load dif
 - Create a new directory called `Saves`.
 - Place all of your custom saves in that folder, and name them to differentiate between them. 
 - Launch USGM, it will generate the default config file suited for Shadow Warrior 3.
-- Once you're ready, select the save, slot id and click "Load save".
+- Change the config content to suit your game. (as shown below)
+- Relaunch USGM, to load the new config.
+- And once you're ready, select the save, slot id and click "Load save".
 
 
 ## Configuring for different games
