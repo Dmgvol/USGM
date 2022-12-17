@@ -67,6 +67,16 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
+High On Life:
+```css
+SaveFilePrefix=Slot{n}
+SaveFilePrefix=Slot{n}_Swap
+SaveFileCountStart=0
+TotalSlots=1
+IsComplex=True
+Sort=True
+```
+
 Scorn:
 ```css
 SaveFilePrefix=ScornSave_0{n}
