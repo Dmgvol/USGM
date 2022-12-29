@@ -70,7 +70,7 @@ _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
 Amok Runner:
-```cs
+```css
 SaveFilePrefix=AmokEpisode{range:1-5}
 SaveFilePrefix=AmokState
 SaveFileCountStart=0
