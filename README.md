@@ -69,6 +69,16 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
+Amok Runner:
+```cs
+SaveFilePrefix=AmokEpisode{range:1-5}
+SaveFilePrefix=AmokState
+SaveFileCountStart=0
+TotalSlots=0
+IsComplex=True
+Sort=True
+```
+
 High On Life:
 ```css
 SaveFilePrefix=Slot{n}
