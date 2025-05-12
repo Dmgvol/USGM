@@ -69,6 +69,15 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
+Clair Obscur: Expedition 33:
+```css
+SaveFilePrefix=EXPEDITION_{n}
+SaveFileCountStart=0
+TotalSlots=10
+IsComplex=True
+Sort=True
+```
+
 Amok Runner:
 ```css
 SaveFilePrefix=AmokEpisode{range:1-5}
