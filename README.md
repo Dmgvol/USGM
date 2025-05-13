@@ -69,11 +69,26 @@ and etc...
 _Note: file names are just for example purposes._</br>
 
 ## Configs for different games 
-Clair Obscur: Expedition 33:
+Clair Obscur: Expedition 33 (COE33):
+
+> [!NOTE]  
+> For COE33 - Make sure to copy `SavesContainer.sav` and all `EXPEDITION` save files into the individually named save folders.
+
 ```css
-SaveFilePrefix=EXPEDITION_{n}
+SaveFilePrefix=EXPEDITION_0
+SaveFilePrefix=EXPEDITION_1
+SaveFilePrefix=EXPEDITION_2
+SaveFilePrefix=EXPEDITION_3
+SaveFilePrefix=EXPEDITION_4
+SaveFilePrefix=EXPEDITION_5
+SaveFilePrefix=EXPEDITION_6
+SaveFilePrefix=EXPEDITION_7
+SaveFilePrefix=EXPEDITION_8
+SaveFilePrefix=EXPEDITION_9
+SaveFilePrefix=EXPEDITION_10
+SaveFilePrefix=SavesContainer
 SaveFileCountStart=0
-TotalSlots=10
+TotalSlots=1
 IsComplex=True
 Sort=True
 ```
